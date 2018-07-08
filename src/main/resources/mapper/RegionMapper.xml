@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tencent.mig.dao.RegionDao">
+    <resultMap id="BaseResultMap" type="com.tencent.mig.model.Region">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name
+    </sql>
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_region
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="getAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_region
+    </select>
+    <insert id="insertList">
+        insert into tb_region (id, name)
+        values
+        <foreach collection="list" separator="," index="index" item="item">
+            (#{item.id,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR})
+        </foreach>
+
+    </insert>
+    <insert id="insert" parameterType="com.tencent.mig.model.Region">
+        insert into tb_region
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <delete id="deleteAll">
+        delete from tb_region
+    </delete>
+</mapper>

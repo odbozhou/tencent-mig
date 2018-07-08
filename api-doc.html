@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>api-doc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>腾讯MIG招聘api接口文档</h2>
+<h3>运行要求</h3>
+<p>*JDK 1.8</p>
+<p>*mysql</p>
+<h3>数据库配置</h3>
+<pre><code>修改tencent-mig\src\main\resources\application.properties配置文件
+修改IP
+spring.datasource.druid.url=jdbc:mysql://IP:3306/db_tencent_mig?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull
+IP替换数据库主机
+
+修改账号
+spring.datasource.druid.username=账号
+&quot;账号&quot;替换为数据库用户    
+
+修改密码
+spring.datasource.druid.password=密码
+&quot;密码&quot;替换为数据库密码
+</code></pre>
+
+<h3>运行命令</h3>
+<pre><code>nohub java -jar tencent-mig-0.0.1-SNAPSHOT.jar -Dserver.port=8888 &amp;
+
+-Dserver.port=8888 设置服务监听端口
+</code></pre>
+
+<h3>接口文档说明</h3>
+<pre><code>http://127.0.0.1:8888 替换为服务端映射域名
+
+返回数据格式
+    {
+
+        &quot;code&quot;: code码,
+        &quot;data&quot;: 返回数据，
+        &quot;msg&quot; : 错误信息
+        }
+
+    }
+code = 0 表示返回成功，其他返回码为失败，并且返回msg 错误信息。
+</code></pre>
+
+<h4>01.获取地区信息</h4>
+<p><strong>接口调用请求说明</strong></p>
+<pre><code>http请求方式: GET
+http://127.0.0.1:8888/region/getAll
+</code></pre>
+
+<p><strong>返回结果</strong></p>
+<p>正确的Json返回结果：</p>
+<pre><code>{
+
+    &quot;code&quot;: 0,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: &quot;33&quot;,
+            &quot;name&quot;: &quot;美国&quot;
+        },
+        {
+            &quot;id&quot;: &quot;66&quot;,
+            &quot;name&quot;: &quot;印度尼西亚&quot;
+        },
+        {
+            &quot;id&quot;: &quot;45&quot;,
+            &quot;name&quot;: &quot;泰国&quot;
+        },
+        {
+            &quot;id&quot;: &quot;59&quot;,
+            &quot;name&quot;: &quot;日本&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2320&quot;,
+            &quot;name&quot;: &quot;合肥&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2175&quot;,
+            &quot;name&quot;: &quot;上海&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2252&quot;,
+            &quot;name&quot;: &quot;杭州&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2461&quot;,
+            &quot;name&quot;: &quot;台湾&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2196&quot;,
+            &quot;name&quot;: &quot;广州&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2280&quot;,
+            &quot;name&quot;: &quot;海口&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2218&quot;,
+            &quot;name&quot;: &quot;深圳&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2426&quot;,
+            &quot;name&quot;: &quot;昆明&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2459&quot;,
+            &quot;name&quot;: &quot;香港&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2228&quot;,
+            &quot;name&quot;: &quot;南京&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2346&quot;,
+            &quot;name&quot;: &quot;郑州&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2225&quot;,
+            &quot;name&quot;: &quot;天津&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2268&quot;,
+            &quot;name&quot;: &quot;成都&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2355&quot;,
+            &quot;name&quot;: &quot;武汉&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2156&quot;,
+            &quot;name&quot;: &quot;北京&quot;
+        },
+        {
+            &quot;id&quot;: &quot;90&quot;,
+            &quot;name&quot;: &quot;荷兰&quot;
+        },
+        {
+            &quot;id&quot;: &quot;60&quot;,
+            &quot;name&quot;: &quot;马来西亚&quot;
+        },
+        {
+            &quot;id&quot;: &quot;2418&quot;,
+            &quot;name&quot;: &quot;长春&quot;
+        }
+    ]
+
+}
+</code></pre>
+
+<p>结果说明：</p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+	<tbody>
+		<tr>
+			<th width="16%">字段名称</th>
+			<th width="11%">字段类型</th>
+			<th width="62%">字段说明</th>
+		</tr>
+		<tr>
+		 	<td>id</td>
+			<td>string</td>
+			<td>地区id</td>
+		</tr>
+		<tr>
+		 	<td>name</td>
+			<td>string</td>
+			<td>地区名称</td>
+		</tr>
+	</tbody>
+</table>    
+<hr />
+<h4>02.获取职位类别信息</h4>
+<p><strong>接口调用请求说明</strong></p>
+<pre><code>http请求方式: GET
+http://127.0.0.1:8888/category/getAll
+</code></pre>
+
+<p><strong>返回结果</strong></p>
+<p>正确的Json返回结果：</p>
+<pre><code>{
+
+    &quot;code&quot;: 0,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: &quot;81&quot;,
+            &quot;name&quot;: &quot;设计类&quot;
+        },
+        {
+            &quot;id&quot;: &quot;82&quot;,
+            &quot;name&quot;: &quot;产品/项目类&quot;
+        },
+        {
+            &quot;id&quot;: &quot;83&quot;,
+            &quot;name&quot;: &quot;市场类&quot;
+        },
+        {
+            &quot;id&quot;: &quot;84&quot;,
+            &quot;name&quot;: &quot;职能类&quot;
+        },
+        {
+            &quot;id&quot;: &quot;85&quot;,
+            &quot;name&quot;: &quot;内容编辑类&quot;
+        },
+        {
+            &quot;id&quot;: &quot;86&quot;,
+            &quot;name&quot;: &quot;客户服务类&quot;
+        },
+        {
+            &quot;id&quot;: &quot;87&quot;,
+            &quot;name&quot;: &quot;技术类&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>结果说明：</p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+	<tbody>
+		<tr>
+			<th width="16%">字段名称</th>
+			<th width="11%">字段类型</th>
+			<th width="62%">字段说明</th>
+		</tr>
+		<tr>
+		 	<td>id</td>
+			<td>string</td>
+			<td>职位类别id</td>
+		</tr>
+		<tr>
+		 	<td>name</td>
+			<td>string</td>
+			<td>职位类别名称</td>
+		</tr>
+	</tbody>
+</table>    
+<hr />
+<h4>03.获取职位列表</h4>
+<p><strong>接口调用请求说明</strong></p>
+<pre><code>http请求方式: GET
+http://127.0.0.1:8888/job/getPagerList
+</code></pre>
+
+<p><strong>参数说明</strong></p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+	<tbody>
+		<tr>
+			<th width="16%">参数名称</th>
+			<th width="11%">是否必须</th>
+			<th width="11%">字段类型</th>
+			<th width="62%">参数说明</th>
+		</tr>
+		<tr>
+			<td>regionId</td>
+			<td>否</td>
+			<td>string</td>
+			<td>地区id</td>
+		</tr>
+		<tr>
+			<td>categoryId</td>
+			<td>否</td>
+			<td>string</td>
+			<td>职位类别id</td>
+		</tr>
+	    <tr>
+			<td>pageRows</td>
+			<td>否</td>
+			<td>number</td>
+			<td>分页时每页记录数（默认20条）</td>
+		</tr>
+		<tr>
+			<td>pageIndex</td>
+			<td>否</td>
+			<td>number</td>
+			<td>当前页</td>
+		</tr>
+	</tbody>
+</table>
+<p><strong>返回结果</strong></p>
+<p>正确的Json返回结果：</p>
+<p>{</p>
+<pre><code>    &quot;code&quot;: 0,
+    &quot;data&quot;: {
+        &quot;list&quot;: [
+            {
+                &quot;id&quot;: &quot;42184&quot;,
+                &quot;title&quot;: &quot;MIG16-地图检索机器学习算法高级研发工程师（北京）&quot;,
+                &quot;regionId&quot;: &quot;2156&quot;,
+                &quot;regionName&quot;: &quot;北京&quot;,
+                &quot;categoryId&quot;: &quot;87&quot;,
+                &quot;categoryName&quot;: &quot;技术类&quot;,
+                &quot;recruitingNumbers&quot;: 1,
+                &quot;isUrgentlySeeking&quot;: 0,
+                &quot;createTime&quot;: &quot;2018-07-05T22:35:40.000+0000&quot;,
+                &quot;requirment&quot;: null,
+                &quot;responsibility&quot;: null
+            },
+            {
+                &quot;id&quot;: &quot;42112&quot;,
+                &quot;title&quot;: &quot;MIG16-Android开发工程师(北京)&quot;,
+                &quot;regionId&quot;: &quot;2156&quot;,
+                &quot;regionName&quot;: &quot;北京&quot;,
+                &quot;categoryId&quot;: &quot;87&quot;,
+                &quot;categoryName&quot;: &quot;技术类&quot;,
+                &quot;recruitingNumbers&quot;: 1,
+                &quot;isUrgentlySeeking&quot;: 0,
+                &quot;createTime&quot;: &quot;2018-07-05T22:35:28.000+0000&quot;,
+                &quot;requirment&quot;: null,
+                &quot;responsibility&quot;: null
+            },
+            {
+                &quot;id&quot;: &quot;41816&quot;,
+                &quot;title&quot;: &quot;MIG16-自动驾驶仿真模拟系统-服务器工程师&quot;,
+                &quot;regionId&quot;: &quot;2156&quot;,
+                &quot;regionName&quot;: &quot;北京&quot;,
+                &quot;categoryId&quot;: &quot;87&quot;,
+                &quot;categoryName&quot;: &quot;技术类&quot;,
+                &quot;recruitingNumbers&quot;: 1,
+                &quot;isUrgentlySeeking&quot;: 0,
+                &quot;createTime&quot;: &quot;2018-07-05T22:34:42.000+0000&quot;,
+                &quot;requirment&quot;: null,
+                &quot;responsibility&quot;: null
+            }
+        ],
+        &quot;pager&quot;: {
+            &quot;totalRows&quot;: 104,
+            &quot;pageRows&quot;: 3,
+            &quot;pageIndex&quot;: 1,
+            &quot;paged&quot;: false,
+            &quot;pageStartRow&quot;: 0,
+            &quot;defaultPageRows&quot;: 20,
+            &quot;totalPages&quot;: 35,
+            &quot;pageEndRow&quot;: 2,
+            &quot;hasPrevPage&quot;: false,
+            &quot;currPageRows&quot;: 3,
+            &quot;hasNextPage&quot;: true
+        }
+    }
+
+}
+</code></pre>
+
+<p><strong>结果说明</strong></p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+
+	    <tr>
+			<th width="18%">字段名称</th>
+			<th width="11%">字段类型</th>
+	  		<th>字段说明</th>
+	    </tr>
+	    <tr>
+			<td>pager</td>
+			<td>object</td>
+			<td colspan='2'>分页信息</td>
+		</tr>
+ 		<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;totalRows</td>
+			<td>number</td>
+			<td>数据总行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageRows</td>
+			<td>number</td>
+			<td>一页显示的行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageIndex</td>
+			<td>number</td>
+			<td>页码</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;totalPages</td>
+			<td>number</td>
+			<td>总页数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageEndRow</td>
+			<td>number</td>
+			<td>当前页在总行数中的结束位置</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;hasPrevPage</td>
+			<td>boolean</td>
+			<td>是否有上一页</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageStartRow</td>
+			<td>number</td>
+			<td>当前页在总行数中的开始位置</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;defaultPageRows</td>
+			<td>number</td>
+			<td>默认每页行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;hasNextPage</td>
+			<td>number</td>
+			<td>是否有下一页</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;currPageRows</td>
+			<td>number</td>
+			<td>实际当前页行数</td>
+		</tr>
+ 		<tr>
+		  		<td>list</td>
+				<td>list</td>
+		  		<td>测肤记录列表</td>
+		</tr>
+ 	      <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;id</td>
+				<td>string</td>
+		  		<td>职位ID</td>
+		  </tr>
+           <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;title</td>
+				<td>string</td>
+		  		<td>职位标题</td>
+		  </tr>
+          <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;regionId</td>
+				<td>string</td>
+		  		<td>地区ID</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;regionName</td>
+				<td>string</td>
+		  		<td>地区名称</td>
+		  </tr>          
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;categoryId</td>
+				<td>string</td>
+		  		<td>职位类型ID</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;categoryName</td>
+				<td>string</td>
+		  		<td>职位类型名称</td>
+		  </tr>		   
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;recruitingNumbers</td>
+				<td>string</td>
+		  		<td>招聘人数</td>
+		  </tr>          
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;isUrgentlySeeking</td>
+				<td>string</td>
+		  		<td>是否急聘（ 0-非急招，1-非急招）</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;createTime</td>
+				<td>string</td>
+		  		<td>创建时间，格式样例："2018-07-05T22:34:42.000+0000"</td>
+		  </tr>
+</table>
+<hr />
+<h4>04.根据职位地点名称职位搜索</h4>
+<p><strong>接口调用请求说明</strong></p>
+<pre><code>http请求方式: GET
+http://127.0.0.1:8888/job/search
+</code></pre>
+
+<p><strong>参数说明</strong></p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+	<tbody>
+		<tr>
+			<th width="16%">参数名称</th>
+			<th width="11%">是否必须</th>
+			<th width="11%">字段类型</th>
+			<th width="62%">参数说明</th>
+		</tr>
+		<tr>
+			<td>searchKey</td>
+			<td>否</td>
+			<td>string</td>
+			<td>搜索关键字</td>
+		</tr>
+		</tr>
+	    <tr>
+			<td>pageRows</td>
+			<td>否</td>
+			<td>number</td>
+			<td>分页时每页记录数（默认20条）</td>
+		</tr>
+		<tr>
+			<td>pageIndex</td>
+			<td>否</td>
+			<td>number</td>
+			<td>当前页</td>
+		</tr>
+	</tbody>
+</table>
+<p><strong>返回结果</strong></p>
+<p>正确的Json返回结果：</p>
+<p>{</p>
+<pre><code>    &quot;code&quot;: 0,
+    &quot;data&quot;: {
+        &quot;list&quot;: [
+            {
+                &quot;id&quot;: &quot;42184&quot;,
+                &quot;title&quot;: &quot;MIG16-地图检索机器学习算法高级研发工程师（北京）&quot;,
+                &quot;regionId&quot;: &quot;2156&quot;,
+                &quot;regionName&quot;: &quot;北京&quot;,
+                &quot;categoryId&quot;: &quot;87&quot;,
+                &quot;categoryName&quot;: &quot;技术类&quot;,
+                &quot;recruitingNumbers&quot;: 1,
+                &quot;isUrgentlySeeking&quot;: 0,
+                &quot;createTime&quot;: &quot;2018-07-05T22:35:40.000+0000&quot;,
+                &quot;requirment&quot;: null,
+                &quot;responsibility&quot;: null
+            },
+            {
+                &quot;id&quot;: &quot;42112&quot;,
+                &quot;title&quot;: &quot;MIG16-Android开发工程师(北京)&quot;,
+                &quot;regionId&quot;: &quot;2156&quot;,
+                &quot;regionName&quot;: &quot;北京&quot;,
+                &quot;categoryId&quot;: &quot;87&quot;,
+                &quot;categoryName&quot;: &quot;技术类&quot;,
+                &quot;recruitingNumbers&quot;: 1,
+                &quot;isUrgentlySeeking&quot;: 0,
+                &quot;createTime&quot;: &quot;2018-07-05T22:35:28.000+0000&quot;,
+                &quot;requirment&quot;: null,
+                &quot;responsibility&quot;: null
+            },
+            {
+                &quot;id&quot;: &quot;41816&quot;,
+                &quot;title&quot;: &quot;MIG16-自动驾驶仿真模拟系统-服务器工程师&quot;,
+                &quot;regionId&quot;: &quot;2156&quot;,
+                &quot;regionName&quot;: &quot;北京&quot;,
+                &quot;categoryId&quot;: &quot;87&quot;,
+                &quot;categoryName&quot;: &quot;技术类&quot;,
+                &quot;recruitingNumbers&quot;: 1,
+                &quot;isUrgentlySeeking&quot;: 0,
+                &quot;createTime&quot;: &quot;2018-07-05T22:34:42.000+0000&quot;,
+                &quot;requirment&quot;: null,
+                &quot;responsibility&quot;: null
+            }
+        ],
+        &quot;pager&quot;: {
+            &quot;totalRows&quot;: 104,
+            &quot;pageRows&quot;: 3,
+            &quot;pageIndex&quot;: 1,
+            &quot;paged&quot;: false,
+            &quot;pageStartRow&quot;: 0,
+            &quot;defaultPageRows&quot;: 20,
+            &quot;totalPages&quot;: 35,
+            &quot;pageEndRow&quot;: 2,
+            &quot;hasPrevPage&quot;: false,
+            &quot;currPageRows&quot;: 3,
+            &quot;hasNextPage&quot;: true
+        }
+    }
+
+}
+</code></pre>
+
+<p><strong>结果说明</strong></p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+
+	    <tr>
+			<th width="18%">字段名称</th>
+			<th width="11%">字段类型</th>
+	  		<th>字段说明</th>
+	    </tr>
+	    <tr>
+			<td>pager</td>
+			<td>object</td>
+			<td colspan='2'>分页信息</td>
+		</tr>
+ 		<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;totalRows</td>
+			<td>number</td>
+			<td>数据总行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageRows</td>
+			<td>number</td>
+			<td>一页显示的行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageIndex</td>
+			<td>number</td>
+			<td>页码</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;totalPages</td>
+			<td>number</td>
+			<td>总页数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageEndRow</td>
+			<td>number</td>
+			<td>当前页在总行数中的结束位置</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;hasPrevPage</td>
+			<td>boolean</td>
+			<td>是否有上一页</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageStartRow</td>
+			<td>number</td>
+			<td>当前页在总行数中的开始位置</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;defaultPageRows</td>
+			<td>number</td>
+			<td>默认每页行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;hasNextPage</td>
+			<td>number</td>
+			<td>是否有下一页</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;currPageRows</td>
+			<td>number</td>
+			<td>实际当前页行数</td>
+		</tr>
+ 		<tr>
+		  		<td>list</td>
+				<td>list</td>
+		  		<td>测肤记录列表</td>
+		</tr>
+ 	      <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;id</td>
+				<td>string</td>
+		  		<td>职位ID</td>
+		  </tr>
+           <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;title</td>
+				<td>string</td>
+		  		<td>职位标题</td>
+		  </tr>
+          <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;regionId</td>
+				<td>string</td>
+		  		<td>地区ID</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;regionName</td>
+				<td>string</td>
+		  		<td>地区名称</td>
+		  </tr>          
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;categoryId</td>
+				<td>string</td>
+		  		<td>职位类型ID</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;categoryName</td>
+				<td>string</td>
+		  		<td>职位类型名称</td>
+		  </tr>		   
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;recruitingNumbers</td>
+				<td>string</td>
+		  		<td>招聘人数</td>
+		  </tr>          
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;isUrgentlySeeking</td>
+				<td>string</td>
+		  		<td>是否急聘（ 0-非急招，1-非急招）</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;createTime</td>
+				<td>string</td>
+		  		<td>创建时间，格式样例："2018-07-05T22:34:42.000+0000"</td>
+		  </tr>
+</table>
+<hr />
+<h3>05.获取职位详情</h3>
+<p><strong>接口调用请求说明</strong></p>
+<pre><code>http请求方式: GET
+http://127.0.0.1:8888/job/detail
+</code></pre>
+
+<p><strong>参数说明</strong></p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+	<tbody>
+		<tr>
+			<th width="16%">参数名称</th>
+			<th width="11%">是否必须</th>
+			<th width="11%">字段类型</th>
+			<th width="62%">参数说明</th>
+		</tr>
+		<tr>
+			<td>id</td>
+			<td>是</td>
+			<td>string</td>
+			<td>职位ID</td>
+		</tr>
+	</tbody>
+</table>
+<p><strong>返回结果</strong></p>
+<p>正确的Json返回结果：</p>
+<pre><code>{
+
+    &quot;code&quot;: 0,
+    &quot;data&quot;: {
+        &quot;id&quot;: &quot;42211&quot;,
+        &quot;title&quot;: &quot;MIG03-腾讯MIG研发部架构师（深圳）&quot;,
+        &quot;regionId&quot;: &quot;2218&quot;,
+        &quot;regionName&quot;: &quot;深圳&quot;,
+        &quot;categoryId&quot;: &quot;87&quot;,
+        &quot;categoryName&quot;: &quot;技术类&quot;,
+        &quot;recruitingNumbers&quot;: 1,
+        &quot;isUrgentlySeeking&quot;: 0,
+        &quot;createTime&quot;: &quot;2018-07-06T22:38:38.000+0000&quot;,
+        &quot;requirment&quot;: &quot;5年以上工作经验，至少2年以上大型分布式系统架构及开发经验；\n至少精通java/C++其中一门面向对象语言，熟悉linux平台下服务器开发运维能力\n熟悉大容量、高性能、高可用服务开发，对缓存、存储、并发等场景有较好处理经验。\n对业界开源软件有持续关注，并对一些核心组件有过深入的了解；\n逻辑思维清晰，优秀的分析和解决问题的能力，较强的抗压力。\n有相关大数据架构及分析的经验优先。&quot;,
+        &quot;responsibility&quot;: &quot;负责腾讯移动互联网事业群（MIG）研发部核心业务系统的架构设计和基础平台建设工作； \n参与系统的需求分析、架构设计、核心框架及组件的编码等开发工作；\n持续从技术上提升服务安全性、可用性等技术能力。&quot;
+    }
+
+}
+</code></pre>
+
+<p><strong>结果说明</strong></p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+
+	    <tr>
+			<th width="18%">字段名称</th>
+			<th width="11%">字段类型</th>
+	  		<th>字段说明</th>
+	    </tr>
+ 	      <tr>
+		  		<td>id</td>
+				<td>string</td>
+		  		<td>职位ID</td>
+		  </tr>
+           <tr>
+		  		<td>title</td>
+				<td>string</td>
+		  		<td>职位标题</td>
+		  </tr>
+          <tr>
+		  		<td>regionId</td>
+				<td>string</td>
+		  		<td>地区ID</td>
+		  </tr>         
+		   <tr>
+		  		<td>regionName</td>
+				<td>string</td>
+		  		<td>地区名称</td>
+		  </tr>          
+		  <tr>
+		  		<td>categoryId</td>
+				<td>string</td>
+		  		<td>职位类型ID</td>
+		  </tr>         
+		   <tr>
+		  		<td>categoryName</td>
+				<td>string</td>
+		  		<td>职位类型名称</td>
+		  </tr>		   
+		  <tr>
+		  		<td>recruitingNumbers</td>
+				<td>number</td>
+		  		<td>招聘人数</td>
+		  </tr>          
+		  <tr>
+		  		<td>isUrgentlySeeking</td>
+				<td>string</td>
+		  		<td>是否急聘（ 0-非急招，1-非急招）</td>
+		  </tr>         
+		   <tr>
+		  		<td>createTime</td>
+				<td>string</td>
+		  		<td>创建时间，格式样例："2018-07-05T22:34:42.000+0000"</td>
+		  </tr>		 
+		   <tr>
+		  		<td>isUrgentlySeeking</td>
+				<td>string</td>
+		  		<td>是否急聘（ 0-非急招，1-非急招）</td>
+		  </tr>         
+		   <tr>
+		  		<td>createTime</td>
+				<td>string</td>
+		  		<td>创建时间，格式样例：2018-07-05T22:34:42.000+0000</td>
+		  </tr>		   
+		  <tr>
+		  		<td>requirment</td>
+				<td>string</td>
+		  		<td>职位要求</td>
+		  </tr>         
+		   <tr>
+		  		<td>responsibility</td>
+				<td>string</td>
+		  		<td>职位职责</td>
+		  </tr>
+</table>
+<hr />
+<h4>06.同步招聘信息数据（全量同步）</h4>
+<p><strong>接口调用请求说明</strong></p>
+<pre><code>http请求方式: GET
+http://127.0.0.1:8888/common/sync
+</code></pre>
+
+<p><strong>返回结果</strong></p>
+<p>正确的Json返回结果：</p>
+<pre><code>{
+
+    &quot;code&quot;: 0,
+    &quot;data&quot;: {
+        &quot;sync&quot;: 1
+    }
+
+}
+</code></pre>
+
+<p>结果说明：</p>
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+	<tbody>
+		<tr>
+			<th width="16%">字段名称</th>
+			<th width="11%">字段类型</th>
+			<th width="62%">字段说明</th>
+		</tr>
+		<tr>
+		 	<td>sync</td>
+			<td>number</td>
+			<td>同步状态（0-同步失败， 1-同步成功）</td>
+		</tr>
+	</tbody>
+</table>    
+<hr />
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

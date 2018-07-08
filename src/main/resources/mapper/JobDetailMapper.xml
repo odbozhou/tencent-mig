@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tencent.mig.dao.JobDetailDao">
+    <resultMap id="BaseResultMap" type="com.tencent.mig.model.JobDetail">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.tencent.mig.model.JobDetail">
+        <result column="requirment" jdbcType="LONGVARCHAR" property="requirment"/>
+        <result column="responsibility" jdbcType="LONGVARCHAR" property="responsibility"/>
+    </resultMap>
+    <sql id="Blob_Column_List">
+    requirment, responsibility
+  </sql>
+    <delete id="delete" parameterType="java.lang.String">
+    delete from tb_job_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <delete id="deleteAll" parameterType="java.lang.String">
+    delete from tb_job_detail
+  </delete>
+    <insert id="insertList" parameterType="com.tencent.mig.model.JobDetail">
+        insert into tb_job_detail (id, requirment, responsibility
+        )
+        values
+        <foreach collection="list" separator="," index="index" item="item">
+            (
+            #{item.id,jdbcType=VARCHAR}, #{item.requirment,jdbcType=LONGVARCHAR},
+            #{item.responsibility,jdbcType=LONGVARCHAR}
+            )
+        </foreach>
+    </insert>
+    <insert id="insert" parameterType="com.tencent.mig.model.JobDetail">
+        insert into tb_job_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="requirment != null">
+                requirment,
+            </if>
+            <if test="responsibility != null">
+                responsibility,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="requirment != null">
+                #{requirment,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="responsibility != null">
+                #{responsibility,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>

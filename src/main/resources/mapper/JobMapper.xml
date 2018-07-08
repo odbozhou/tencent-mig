@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tencent.mig.dao.JobDao">
+    <resultMap id="BaseResultMap" type="com.tencent.mig.model.Job">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="region_id" jdbcType="VARCHAR" property="regionId"/>
+        <result column="region_name" jdbcType="VARCHAR" property="regionName"/>
+        <result column="category_id" jdbcType="VARCHAR" property="categoryId"/>
+        <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
+        <result column="recruiting_numbers" jdbcType="INTEGER" property="recruitingNumbers"/>
+        <result column="is_urgently_seeking" jdbcType="TINYINT" property="isUrgentlySeeking"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <resultMap id="detailMap" type="com.tencent.mig.model.Job">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="region_id" jdbcType="VARCHAR" property="regionId"/>
+        <result column="region_name" jdbcType="VARCHAR" property="regionName"/>
+        <result column="category_id" jdbcType="VARCHAR" property="categoryId"/>
+        <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
+        <result column="recruiting_numbers" jdbcType="INTEGER" property="recruitingNumbers"/>
+        <result column="is_urgently_seeking" jdbcType="TINYINT" property="isUrgentlySeeking"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, title, region_id, region_name, category_id, category_name, recruiting_numbers, 
+    is_urgently_seeking, create_time
+   </sql>
+    <sql id="detail_Column_List">
+        id, title, region_id, region_name, category_id, category_name, recruiting_numbers,
+        is_urgently_seeking, create_time, requirment, responsibility
+    </sql>
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_job
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="getTotal" parameterType="com.tencent.mig.model.Job" resultType="java.lang.Integer">
+        select
+        count(*)
+        from tb_job
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="title != null">
+                and title =#{title,jdbcType=VARCHAR}
+            </if>
+            <if test="regionId != null">
+                and region_id = #{regionId,jdbcType=VARCHAR}
+            </if>
+            <if test="regionName != null">
+                and region_name = #{regionName,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryId != null">
+                and category_id =#{categoryId,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryName != null">
+                and category_name = #{categoryName,jdbcType=VARCHAR}
+            </if>
+            <if test="recruitingNumbers != null">
+                and recruiting_numbers = #{recruitingNumbers,jdbcType=INTEGER}
+            </if>
+            <if test="isUrgentlySeeking != null">
+                and is_urgently_seeking = #{isUrgentlySeeking,jdbcType=TINYINT}
+            </if>
+            <if test="createTime != null">
+                and createtime = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+    <select id="getPagerList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_job
+        <where>
+            <if test="regionId != null">
+                and region_id = #{regionId,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryId != null">
+                and category_id =#{categoryId,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by create_time desc
+        limit #{pageStartRow}, #{pageRows}
+    </select>
+    <select id="getSearchTotal" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select
+        count(*)
+        from tb_job
+        <where>
+            <if test="null != searchKey">
+                title LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+                OR region_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+                OR category_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+            </if>
+        </where>
+    </select>
+    <select id="search" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_job
+        <where>
+            <if test="null != searchKey">
+                title LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+                OR region_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+                OR category_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+            </if>
+        </where>
+        order by create_time DESC
+        limit #{pageStartRow}, #{pageRows}
+    </select>
+    <select id="detail" resultMap="detailMap">
+        select
+        tj.id, tj.title, tj.region_id, tj.region_name, tj.category_id, tj.category_name, tj.recruiting_numbers,
+        tj.is_urgently_seeking, tj.create_time, tjd.requirment, tjd.responsibility
+        from tb_job tj, tb_job_detail tjd
+        where
+        tj.id = #{id, jdbcType=VARCHAR}
+        and tj.id = tjd.id
+    </select>
+    <delete id="delete" parameterType="java.lang.String">
+    delete from tb_job
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <delete id="deleteAll" parameterType="java.lang.String">
+    delete from tb_job
+  </delete>
+    <insert id="insertList">
+        insert into tb_job (id, title, region_id,
+        region_name, category_id, category_name,
+        recruiting_numbers, is_urgently_seeking, create_time
+        )
+        values
+        <foreach collection="list" separator="," item="item" index="index">
+            (
+            #{item.id,jdbcType=VARCHAR}, #{item.title,jdbcType=VARCHAR}, #{item.regionId,jdbcType=VARCHAR},
+            #{item.regionName,jdbcType=VARCHAR}, #{item.categoryId,jdbcType=VARCHAR},
+            #{item.categoryName,jdbcType=VARCHAR},
+            #{item.recruitingNumbers,jdbcType=INTEGER}, #{item.isUrgentlySeeking,jdbcType=TINYINT},
+            #{item.createTime,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+    </insert>
+    <insert id="insert" parameterType="com.tencent.mig.model.Job">
+        insert into tb_job
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="regionId != null">
+                region_id,
+            </if>
+            <if test="regionName != null">
+                region_name,
+            </if>
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="categoryName != null">
+                category_name,
+            </if>
+            <if test="recruitingNumbers != null">
+                recruiting_numbers,
+            </if>
+            <if test="isUrgentlySeeking != null">
+                is_urgently_seeking,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="regionId != null">
+                #{regionId,jdbcType=VARCHAR},
+            </if>
+            <if test="regionName != null">
+                #{regionName,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryName != null">
+                #{categoryName,jdbcType=VARCHAR},
+            </if>
+            <if test="recruitingNumbers != null">
+                #{recruitingNumbers,jdbcType=INTEGER},
+            </if>
+            <if test="isUrgentlySeeking != null">
+                #{isUrgentlySeeking,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.tencent.mig.model.Job">
+        update tb_job
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="regionId != null">
+                region_id = #{regionId,jdbcType=VARCHAR},
+            </if>
+            <if test="regionName != null">
+                region_name = #{regionName,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryName != null">
+                category_name = #{categoryName,jdbcType=VARCHAR},
+            </if>
+            <if test="recruitingNumbers != null">
+                recruiting_numbers = #{recruitingNumbers,jdbcType=INTEGER},
+            </if>
+            <if test="isUrgentlySeeking != null">
+                is_urgently_seeking = #{isUrgentlySeeking,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>
