@@ -31,6 +31,24 @@
             </includes>
         </fileSet>
 
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources/sql</directory>
+            <outputDirectory>sql</outputDirectory>
+            <includes>
+                <include>*.sql</include>
+                <include>ireport/*.jasper</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.basedir}</directory>
+            <outputDirectory>doc</outputDirectory>
+            <includes>
+                <include>*.html</include>
+                <include>ireport/*.jasper</include>
+            </includes>
+        </fileSet>
+
         <!-- 把项目自己编译出来的jar文件，打包进zip文件的根目录 -->
         <fileSet>
             <directory>${project.build.directory}</directory>

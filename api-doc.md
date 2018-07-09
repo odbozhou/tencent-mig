@@ -32,7 +32,9 @@
     logging.path=/data/logs
     /data/logs替换为自定义路径
     
-    
+### 创建数据库
+ 
+    数据库执行sql脚本 tencent-mig-0.0.1-SNAPSHOT/sql/db_tencent_mig.sql
     
 ### 运行命令
 
