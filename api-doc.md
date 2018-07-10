@@ -5,9 +5,13 @@
 
 *mysql
 
-### 数据库配置
+### 解压命令
 
-    修改tencent-mig\src\main\resources\application.properties配置文件
+    tar -xzvf tencent-mig-0.0.1-SNAPSHOT-package.tar.gz
+    
+### 配置修改
+
+    修改tencent-mig-0.0.1-SNAPSHOT\config\application.properties配置文件
     修改IP
     spring.datasource.druid.url=jdbc:mysql://IP:3306/db_tencent_mig?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
     IP替换数据库主机
@@ -18,18 +22,29 @@
     
     修改密码
     spring.datasource.druid.password=密码
-    "密码"替换为数据库密码
+    "密码"替换为数据库密码    
     
+    修改服务监听端口
+    server.port=8888
+    "8888"替换为自定义端口    
+    
+    修改日志打印目录
+    logging.path=/data/logs
+    /data/logs替换为自定义路径
+    
+### 创建数据库
+ 
+    数据库执行sql脚本 tencent-mig-0.0.1-SNAPSHOT/sql/db_tencent_mig.sql
     
 ### 运行命令
 
-    nohub java -jar tencent-mig-0.0.1-SNAPSHOT.jar -Dserver.port=8888 &
+	进入解压后目录 tencent-mig-0.0.1-SNAPSHOT，执行一下命令
 
-    -Dserver.port=8888 设置服务监听端口
+    nohup java -jar -Dspring.config.location=config/application.properties tencent-mig-0.0.1-SNAPSHOT.jar &
 
 ### 接口文档说明
 
-    http://127.0.0.1:8888 替换为服务端映射域名
+    http://127.0.0.1:8888 替换为服务端映射域名或ip
     
     返回数据格式
     	{
