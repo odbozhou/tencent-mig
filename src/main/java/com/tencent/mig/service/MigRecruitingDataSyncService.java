@@ -11,10 +11,12 @@ import com.tencent.mig.utils.HttpClientUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -51,8 +53,17 @@ public class MigRecruitingDataSyncService {
     @Autowired
     private JobDetailService jobDetailService;
 
+    @PostConstruct
+    private void init() {
+        sync();
+    }
+
+    //每天凌晨5点同步数据
+    @Scheduled(cron = "0 0 5 * * ?")
     @Transactional(rollbackFor = Exception.class)
     public boolean sync() {
+        long startTime = System.currentTimeMillis();
+        log.info("…………begin sync recruitment information…………");
         String recruitingDataJson = HttpClientUtils.get(RECRUITING_DATA_URL);
         log.debug("recruitingDataJson: {}", recruitingDataJson);
         if (StringUtils.isEmpty(recruitingDataJson)) {
@@ -107,9 +118,9 @@ public class MigRecruitingDataSyncService {
         jobDetailService.deleteAll();
         jobService.saveList(jobs);
         jobDetailService.saveList(jobDetails);
-
-        System.out.println(recruitingDataJson);
         log.debug(recruitingDataJson);
+        long endTime = System.currentTimeMillis();
+        log.info("…………end sync recruitment information…………, cost {}", (endTime - startTime) / 1000.0);
         return true;
     }
 }
