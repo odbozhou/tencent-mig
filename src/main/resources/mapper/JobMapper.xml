@@ -4,6 +4,10 @@
     <resultMap id="BaseResultMap" type="com.tencent.mig.model.Job">
         <id column="id" jdbcType="VARCHAR" property="id"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="title_prefix" jdbcType="VARCHAR" property="titlePrefix"/>
+        <result column="dept_id" jdbcType="VARCHAR" property="deptId"/>
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
+        <result column="sub_dept_name" jdbcType="VARCHAR" property="subDeptName"/>
         <result column="region_id" jdbcType="VARCHAR" property="regionId"/>
         <result column="region_name" jdbcType="VARCHAR" property="regionName"/>
         <result column="category_id" jdbcType="VARCHAR" property="categoryId"/>
@@ -15,6 +19,10 @@
     <resultMap id="detailMap" type="com.tencent.mig.model.Job">
         <id column="id" jdbcType="VARCHAR" property="id"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="title_prefix" jdbcType="VARCHAR" property="titlePrefix"/>
+        <result column="dept_id" jdbcType="INTEGER" property="deptId"/>
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
+        <result column="sub_dept_name" jdbcType="VARCHAR" property="subDeptName"/>
         <result column="region_id" jdbcType="VARCHAR" property="regionId"/>
         <result column="region_name" jdbcType="VARCHAR" property="regionName"/>
         <result column="category_id" jdbcType="VARCHAR" property="categoryId"/>
@@ -24,11 +32,11 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, title, region_id, region_name, category_id, category_name, recruiting_numbers, 
+    id, title, title_prefix, dept_id, dept_name, sub_dept_name, region_id, region_name, category_id, category_name, recruiting_numbers,
     is_urgently_seeking, create_time
    </sql>
     <sql id="detail_Column_List">
-        id, title, region_id, region_name, category_id, category_name, recruiting_numbers,
+        id, title, title_prefix, dept_id, dept_name, sub_dept_name, region_id, region_name, category_id, category_name, recruiting_numbers,
         is_urgently_seeking, create_time, requirment, responsibility
     </sql>
     <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -47,6 +55,18 @@
             </if>
             <if test="title != null">
                 and title =#{title,jdbcType=VARCHAR}
+            </if>
+            <if test="titlePrefix != null">
+                and title_prefix =#{titlePrefix,jdbcType=VARCHAR}
+            </if>
+            <if test="deptId != null">
+                and dept_id =#{deptId,jdbcType=INTEGER}
+            </if>
+            <if test="deptName != null">
+                and dept_name =#{deptName,jdbcType=VARCHAR}
+            </if>
+            <if test="subDeptName != null">
+                and sub_dept_name =#{subDeptName,jdbcType=VARCHAR}
             </if>
             <if test="regionId != null">
                 and region_id = #{regionId,jdbcType=VARCHAR}
@@ -81,6 +101,12 @@
             </if>
             <if test="categoryId != null">
                 and category_id =#{categoryId,jdbcType=VARCHAR}
+            </if>
+            <if test="deptId != null">
+                and dept_id = #{deptId,jdbcType=INTEGER}
+            </if>
+            <if test="titlePrefix != null">
+                and title_prefix =#{titlePrefix,jdbcType=VARCHAR}
             </if>
         </where>
         order by create_time desc
@@ -129,14 +155,16 @@
     delete from tb_job
   </delete>
     <insert id="insertList">
-        insert into tb_job (id, title, region_id,
+        insert into tb_job (id, title, dept_id, dept_name, sub_dept_name, region_id,
         region_name, category_id, category_name,
         recruiting_numbers, is_urgently_seeking, create_time
         )
         values
         <foreach collection="list" separator="," item="item" index="index">
             (
-            #{item.id,jdbcType=VARCHAR}, #{item.title,jdbcType=VARCHAR}, #{item.regionId,jdbcType=VARCHAR},
+            #{item.id,jdbcType=VARCHAR}, #{item.title,jdbcType=VARCHAR},
+            #{item.title,jdbcType=VARCHAR},#{item.titlePrefix,jdbcType=VARCHAR},#{item.deptId,jdbcType=INTEGER},
+            #{item.title,jdbcType=VARCHAR},#{item.regionId,jdbcType=VARCHAR},
             #{item.regionName,jdbcType=VARCHAR}, #{item.categoryId,jdbcType=VARCHAR},
             #{item.categoryName,jdbcType=VARCHAR},
             #{item.recruitingNumbers,jdbcType=INTEGER}, #{item.isUrgentlySeeking,jdbcType=TINYINT},
@@ -152,6 +180,18 @@
             </if>
             <if test="title != null">
                 title,
+            </if>
+            <if test="titlePrefix != null">
+                title_prefix,
+            </if>
+            <if test="deptId != null">
+                dept_id,
+            </if>
+            <if test="deptName != null">
+                dept_name,
+            </if>
+            <if test="subDeptName != null">
+                sub_dept_name,
             </if>
             <if test="regionId != null">
                 region_id,
@@ -181,6 +221,18 @@
             </if>
             <if test="title != null">
                 #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="titlePrefix != null">
+               #{titlePrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="deptId != null">
+                #{deptId,jdbcType=INTEGER},
+            </if>
+            <if test="deptName != null">
+                #{deptName,jdbcType=VARCHAR},
+            </if>
+            <if test="subDeptName != null">
+                #{subDeptName,jdbcType=VARCHAR},
             </if>
             <if test="regionId != null">
                 #{regionId,jdbcType=VARCHAR},

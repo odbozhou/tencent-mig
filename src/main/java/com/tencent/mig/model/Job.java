@@ -15,6 +15,14 @@ public class Job {
     @JSONField(name = "t")
     private String title;
 
+    private String titlePrefix;
+
+    private Integer deptId;
+
+    private String deptName;
+
+    private String subDeptName;
+
     @JSONField(name = "l")
     private String regionId;
 
@@ -54,6 +62,38 @@ public class Job {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public String getTitlePrefix() {
+        return titlePrefix;
+    }
+
+    public void setTitlePrefix(String titlePrefix) {
+        this.titlePrefix = titlePrefix;
+    }
+
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    public String getSubDeptName() {
+        return subDeptName;
+    }
+
+    public void setSubDeptName(String subDeptName) {
+        this.subDeptName = subDeptName;
     }
 
     public String getRegionId() {
