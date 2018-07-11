@@ -102,12 +102,6 @@
             <if test="categoryId != null">
                 and category_id =#{categoryId,jdbcType=VARCHAR}
             </if>
-            <if test="deptId != null">
-                and dept_id = #{deptId,jdbcType=INTEGER}
-            </if>
-            <if test="titlePrefix != null">
-                and title_prefix =#{titlePrefix,jdbcType=VARCHAR}
-            </if>
         </where>
         order by create_time desc
         limit #{pageStartRow}, #{pageRows}
@@ -138,6 +132,36 @@
         order by create_time DESC
         limit #{pageStartRow}, #{pageRows}
     </select>
+    <select id="getHotTotal" parameterType="com.tencent.mig.model.Department" resultType="java.lang.Integer">
+        select
+        count(distinct tj.id)
+        from tb_job tj, tb_department td
+        <where>
+            tj.title_prefix = td.job_prefix
+            <if test="deptId != null">
+                and td.dept_id = #{deptId,jdbcType=VARCHAR}
+            </if>
+            <if test="jobPrefix != null">
+                and td.job_prefix =#{jobPrefix,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="getHotPagerList" resultMap="BaseResultMap">
+        select
+        DISTINCT  tj.id, title, title_prefix, td.dept_id, dept_name, sub_dept_name, region_id, region_name, category_id, category_name, recruiting_numbers, is_urgently_seeking, create_time
+        from tb_job tj,tb_department td
+        <where>
+            tj.title_prefix = td.job_prefix
+            <if test="deptId != null">
+                and td.dept_id = #{deptId,jdbcType=INTEGER}
+            </if>
+            <if test="jobPrefix != null">
+                and td.job_prefix =#{jobPrefix,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by tj.create_time desc
+        limit #{pageStartRow}, #{pageRows}
+    </select>
     <select id="detail" resultMap="detailMap">
         select
         tj.id, tj.title, tj.region_id, tj.region_name, tj.category_id, tj.category_name, tj.recruiting_numbers,
@@ -155,7 +179,7 @@
     delete from tb_job
   </delete>
     <insert id="insertList">
-        insert into tb_job (id, title, dept_id, dept_name, sub_dept_name, region_id,
+        insert into tb_job (id, title, title_prefix, dept_id, dept_name, sub_dept_name, region_id,
         region_name, category_id, category_name,
         recruiting_numbers, is_urgently_seeking, create_time
         )
@@ -163,8 +187,8 @@
         <foreach collection="list" separator="," item="item" index="index">
             (
             #{item.id,jdbcType=VARCHAR}, #{item.title,jdbcType=VARCHAR},
-            #{item.title,jdbcType=VARCHAR},#{item.titlePrefix,jdbcType=VARCHAR},#{item.deptId,jdbcType=INTEGER},
-            #{item.title,jdbcType=VARCHAR},#{item.regionId,jdbcType=VARCHAR},
+            #{item.titlePrefix,jdbcType=VARCHAR},#{item.deptId,jdbcType=INTEGER},
+            #{item.deptName,jdbcType=VARCHAR},#{item.subDeptName,jdbcType=VARCHAR},#{item.regionId,jdbcType=VARCHAR},
             #{item.regionName,jdbcType=VARCHAR}, #{item.categoryId,jdbcType=VARCHAR},
             #{item.categoryName,jdbcType=VARCHAR},
             #{item.recruitingNumbers,jdbcType=INTEGER}, #{item.isUrgentlySeeking,jdbcType=TINYINT},

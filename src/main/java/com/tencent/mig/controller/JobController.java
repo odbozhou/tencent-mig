@@ -6,6 +6,7 @@ import com.tencent.mig.common.JsonResult;
 import com.tencent.mig.common.NaviPage;
 import com.tencent.mig.common.Pager;
 import com.tencent.mig.constant.GlobalResultStatus;
+import com.tencent.mig.model.Department;
 import com.tencent.mig.model.Job;
 import com.tencent.mig.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,15 @@ public class JobController {
     @GetMapping("search")
     public Object search(Pager pager, String searchKey) {
         NaviPage<Job> jobNaviPage = jobService.search(pager, searchKey);
+        return JsonResult.success(jobNaviPage);
+    }
+
+    @GetMapping("getHotPagerList")
+    public Object getHotPagerList(Pager pager, Integer deptId, String titlePrefix) {
+        Department department = new Department();
+        department.setDeptId(deptId);
+        department.setJobPrefix(titlePrefix);
+        NaviPage<Job> jobNaviPage = jobService.getHotPagerList(pager, department);
         return JsonResult.success(jobNaviPage);
     }
 

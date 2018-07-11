@@ -3,10 +3,7 @@ package com.tencent.mig.service;/**
  */
 
 import com.alibaba.fastjson.JSONArray;
-import com.tencent.mig.model.Category;
-import com.tencent.mig.model.Job;
-import com.tencent.mig.model.JobDetail;
-import com.tencent.mig.model.Region;
+import com.tencent.mig.model.*;
 import com.tencent.mig.utils.HttpClientUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -113,6 +110,12 @@ public class MigRecruitingDataSyncService {
             jobDetails.add(new JobDetail(job.getId(), job.getRequirment(), job.getResponsibility()));
             job.setRegionName((String) regionMap.get(job.getRegionId()));
             job.setCategoryName((String) jobCategoryMap.get(job.getCategoryId()));
+
+            String title = job.getTitle();
+            if (!StringUtils.isEmpty(title)) {
+                String titlePrefix = title.split("-")[0];
+                job.setTitlePrefix(titlePrefix);
+            }
         }
         jobService.deleteAll();
         jobDetailService.deleteAll();

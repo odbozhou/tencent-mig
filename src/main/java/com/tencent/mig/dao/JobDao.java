@@ -1,6 +1,7 @@
 package com.tencent.mig.dao;
 
 import com.tencent.mig.common.BaseDao;
+import com.tencent.mig.model.Department;
 import com.tencent.mig.model.Job;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -56,4 +57,23 @@ public interface JobDao extends BaseDao<Job> {
      * @return
      */
     Job detail(String id);
+
+    /**
+     * 获取热门工作数量
+     *
+     * @param department
+     * @return
+     */
+    int getHotTotal(Department department);
+
+    /**
+     * 取热门工作列表
+     *
+     * @param deptId
+     * @param jobPrefix
+     * @param pageStartRow
+     * @param pageRows
+     * @return
+     */
+    List<Job> getHotPagerList(@Param("deptId") Integer deptId, @Param("jobPrefix") String jobPrefix, @Param("pageStartRow") int pageStartRow, @Param("pageRows") int pageRows);
 }

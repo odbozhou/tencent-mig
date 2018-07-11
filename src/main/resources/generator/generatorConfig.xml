@@ -13,9 +13,9 @@
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
 <!--
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/electronic_report" userId="root" password="jiajia1214">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/electronic_report" userId="" password="">
 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/db_tencent_mig" userId="root" password="jiajia1214">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/db_tencent_mig" userId="" password="">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>

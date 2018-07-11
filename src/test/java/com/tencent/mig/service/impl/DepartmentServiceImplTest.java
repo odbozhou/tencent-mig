@@ -30,7 +30,7 @@ public class DepartmentServiceImplTest {
     @Test
     public void importData() throws Exception {
         ExcelUtil<Department> departmentExcelUtil = new ExcelUtil<>(Department.class);
-        InputStream inputStream = new FileInputStream(new File("C:\\Users\\zhoubo\\Desktop\\MIG职位代码部门对应.xlsx"));
+        InputStream inputStream = new FileInputStream(new File("C:\\Users\\jiajia\\Desktop\\MIG职位代码部门对应.xlsx"));
         final List<Department> sheet1 = departmentExcelUtil.importExcel("Sheet1", inputStream);
         departmentService.saveList(sheet1);
     }

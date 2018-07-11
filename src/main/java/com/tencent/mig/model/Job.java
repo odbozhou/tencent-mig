@@ -1,6 +1,7 @@
 package com.tencent.mig.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
@@ -15,12 +16,16 @@ public class Job {
     @JSONField(name = "t")
     private String title;
 
+    @JsonIgnore
     private String titlePrefix;
 
+    @JsonIgnore
     private Integer deptId;
 
+    @JsonIgnore
     private String deptName;
 
+    @JsonIgnore
     private String subDeptName;
 
     @JSONField(name = "l")

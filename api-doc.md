@@ -872,4 +872,231 @@
 
 ---------
 
+#### 07.获取热门职位列表
+
+**接口调用请求说明**
+
+	http请求方式: GET
+	http://127.0.0.1:8888/job/getHotPagerList
+	
+**参数说明**
+
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+	<tbody>
+		<tr>
+			<th width="16%">参数名称</th>
+			<th width="11%">是否必须</th>
+			<th width="11%">字段类型</th>
+			<th width="62%">参数说明</th>
+		</tr>
+		<tr>
+			<td>deptId</td>
+			<td>否</td>
+			<td>string</td>
+			<td>部门id（1-腾讯安全，2-MIX，3-应用分发，4-互联网+，5-互联网医疗，6-智能硬件，7-支撑平台）</td>
+		</tr>
+		<tr>
+			<td>titlePrefix</td>
+			<td>否</td>
+			<td>string</td>
+			<td>职位前缀</td>
+		</tr>
+	    <tr>
+			<td>pageRows</td>
+			<td>否</td>
+			<td>number</td>
+			<td>分页时每页记录数（默认20条）</td>
+		</tr>
+		<tr>
+			<td>pageIndex</td>
+			<td>否</td>
+			<td>number</td>
+			<td>当前页</td>
+		</tr>
+	</tbody>
+</table>
+
+**返回结果**
+
+正确的Json返回结果：
+
+{
+	
+	    "code": 0,
+	    "data": {
+	        "list": [
+	            {
+	                "id": "42184",
+	                "title": "MIG16-地图检索机器学习算法高级研发工程师（北京）",
+	                "regionId": "2156",
+	                "regionName": "北京",
+	                "categoryId": "87",
+	                "categoryName": "技术类",
+	                "recruitingNumbers": 1,
+	                "isUrgentlySeeking": 0,
+	                "createTime": "2018-07-05T22:35:40.000+0000",
+	                "requirment": null,
+	                "responsibility": null
+	            },
+	            {
+	                "id": "42112",
+	                "title": "MIG16-Android开发工程师(北京)",
+	                "regionId": "2156",
+	                "regionName": "北京",
+	                "categoryId": "87",
+	                "categoryName": "技术类",
+	                "recruitingNumbers": 1,
+	                "isUrgentlySeeking": 0,
+	                "createTime": "2018-07-05T22:35:28.000+0000",
+	                "requirment": null,
+	                "responsibility": null
+	            },
+	            {
+	                "id": "41816",
+	                "title": "MIG16-自动驾驶仿真模拟系统-服务器工程师",
+	                "regionId": "2156",
+	                "regionName": "北京",
+	                "categoryId": "87",
+	                "categoryName": "技术类",
+	                "recruitingNumbers": 1,
+	                "isUrgentlySeeking": 0,
+	                "createTime": "2018-07-05T22:34:42.000+0000",
+	                "requirment": null,
+	                "responsibility": null
+	            }
+	        ],
+	        "pager": {
+	            "totalRows": 104,
+	            "pageRows": 3,
+	            "pageIndex": 1,
+	            "paged": false,
+	            "pageStartRow": 0,
+	            "defaultPageRows": 20,
+	            "totalPages": 35,
+	            "pageEndRow": 2,
+	            "hasPrevPage": false,
+	            "currPageRows": 3,
+	            "hasNextPage": true
+	        }
+	    }
+	
+	}
+	
+**结果说明**
+<table width="100%" style="border-spacing: 0;  border-collapse: collapse;">
+
+	    <tr>
+			<th width="18%">字段名称</th>
+			<th width="11%">字段类型</th>
+	  		<th>字段说明</th>
+	    </tr>
+	    <tr>
+			<td>pager</td>
+			<td>object</td>
+			<td colspan='2'>分页信息</td>
+		</tr>
+ 		<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;totalRows</td>
+			<td>number</td>
+			<td>数据总行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageRows</td>
+			<td>number</td>
+			<td>一页显示的行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageIndex</td>
+			<td>number</td>
+			<td>页码</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;totalPages</td>
+			<td>number</td>
+			<td>总页数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageEndRow</td>
+			<td>number</td>
+			<td>当前页在总行数中的结束位置</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;hasPrevPage</td>
+			<td>boolean</td>
+			<td>是否有上一页</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;pageStartRow</td>
+			<td>number</td>
+			<td>当前页在总行数中的开始位置</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;defaultPageRows</td>
+			<td>number</td>
+			<td>默认每页行数</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;hasNextPage</td>
+			<td>number</td>
+			<td>是否有下一页</td>
+		</tr>
+    	<tr>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;currPageRows</td>
+			<td>number</td>
+			<td>实际当前页行数</td>
+		</tr>
+ 		<tr>
+		  		<td>list</td>
+				<td>list</td>
+		  		<td>测肤记录列表</td>
+		</tr>
+ 	      <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;id</td>
+				<td>string</td>
+		  		<td>职位ID</td>
+		  </tr>
+           <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;title</td>
+				<td>string</td>
+		  		<td>职位标题</td>
+		  </tr>
+          <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;regionId</td>
+				<td>string</td>
+		  		<td>地区ID</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;regionName</td>
+				<td>string</td>
+		  		<td>地区名称</td>
+		  </tr>          
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;categoryId</td>
+				<td>string</td>
+		  		<td>职位类型ID</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;categoryName</td>
+				<td>string</td>
+		  		<td>职位类型名称</td>
+		  </tr>		   
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;recruitingNumbers</td>
+				<td>string</td>
+		  		<td>招聘人数</td>
+		  </tr>          
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;isUrgentlySeeking</td>
+				<td>string</td>
+		  		<td>是否急聘（ 0-非急招，1-非急招）</td>
+		  </tr>         
+		   <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;createTime</td>
+				<td>string</td>
+		  		<td>创建时间，格式样例："2018-07-05T22:34:42.000+0000"</td>
+		  </tr>
+</table>
+
+---------
+
 
