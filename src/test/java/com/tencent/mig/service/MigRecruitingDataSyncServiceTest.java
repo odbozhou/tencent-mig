@@ -23,4 +23,8 @@ public class MigRecruitingDataSyncServiceTest {
         migRecruitingDataSyncService.sync();
     }
 
+    @Test
+    public void importData() {
+    }
+
 }
