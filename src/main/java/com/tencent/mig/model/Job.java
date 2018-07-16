@@ -16,7 +16,6 @@ public class Job {
     @JSONField(name = "t")
     private String title;
 
-    @JsonIgnore
     private String titlePrefix;
 
     @JsonIgnore
