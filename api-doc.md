@@ -925,6 +925,18 @@
 			<td>职位前缀</td>
 		</tr>
 		<tr>
+			<td>regionId</td>
+			<td>否</td>
+			<td>string</td>
+			<td>地区id</td>
+		</tr>
+		<tr>
+			<td>categoryId</td>
+			<td>否</td>
+			<td>string</td>
+			<td>职位类别id</td>
+		</tr>		
+		<tr>
 			<td>searchKey</td>
 			<td>否</td>
 			<td>string</td>

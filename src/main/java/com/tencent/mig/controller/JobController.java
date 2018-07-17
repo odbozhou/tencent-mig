@@ -41,11 +41,8 @@ public class JobController {
     }
 
     @GetMapping("getHotPagerList")
-    public Object getHotPagerList(Pager pager, Integer deptId, String titlePrefix, String searchKey) {
-        Department department = new Department();
-        department.setDeptId(deptId);
-        department.setJobPrefix(titlePrefix);
-        NaviPage<Job> jobNaviPage = jobService.getHotPagerList(pager, department, searchKey);
+    public Object getHotPagerList(Pager pager, Integer deptId, String titlePrefix, String regionId, String categoryId, String searchKey) {
+        NaviPage<Job> jobNaviPage = jobService.getHotPagerList(pager, deptId, titlePrefix, regionId, categoryId, searchKey);
         return JsonResult.success(jobNaviPage);
     }
 

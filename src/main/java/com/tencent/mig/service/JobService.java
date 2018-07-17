@@ -3,7 +3,6 @@ package com.tencent.mig.service;
 import com.tencent.mig.common.BaseService;
 import com.tencent.mig.common.NaviPage;
 import com.tencent.mig.common.Pager;
-import com.tencent.mig.model.Department;
 import com.tencent.mig.model.Job;
 
 /**
@@ -43,9 +42,12 @@ public interface JobService extends BaseService<Job> {
      * 获取热门职位列表
      *
      * @param pager
-     * @param department
+     * @param deptId
+     * @param titlePrefix
+     * @param regionId
+     * @param categoryId
      * @param searchKey
      * @return
      */
-    NaviPage<Job> getHotPagerList(Pager pager, Department department, String searchKey);
+    NaviPage<Job> getHotPagerList(Pager pager, Integer deptId, String titlePrefix, String regionId, String categoryId, String searchKey);
 }

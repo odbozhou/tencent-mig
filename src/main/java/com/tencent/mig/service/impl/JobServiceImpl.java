@@ -2,7 +2,6 @@ package com.tencent.mig.service.impl;
 
 import com.tencent.mig.common.*;
 import com.tencent.mig.dao.JobDao;
-import com.tencent.mig.model.Department;
 import com.tencent.mig.model.Job;
 import com.tencent.mig.service.DepartmentService;
 import com.tencent.mig.service.JobService;
@@ -58,13 +57,13 @@ public class JobServiceImpl extends BaseServiceImpl<Job> implements JobService {
     }
 
     @Override
-    public NaviPage<Job> getHotPagerList(Pager pager, Department department, String searchKey) {
-        int totalRow = jobDao.getHotTotal(department.getDeptId(), department.getJobPrefix(), searchKey);
+    public NaviPage<Job> getHotPagerList(Pager pager, Integer deptId, String titlePrefix, String regionId, String categoryId, String searchKey) {
+        int totalRow = jobDao.getHotTotal(deptId, titlePrefix, regionId, categoryId, searchKey);
         if (0 == totalRow) {
             return null;
         }
         pager.setTotalRows(totalRow);
-        List<Job> list = jobDao.getHotPagerList(department.getDeptId(), department.getJobPrefix(), searchKey, pager.getPageStartRow(), pager.getPageRows());
+        List<Job> list = jobDao.getHotPagerList(deptId, titlePrefix, regionId, categoryId, searchKey, pager.getPageStartRow(), pager.getPageRows());
         return NaviPageUtils.toNaviPage(list, pager);
     }
 }

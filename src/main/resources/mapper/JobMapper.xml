@@ -154,6 +154,12 @@
             <if test="jobPrefix != null">
                 and td.job_prefix =#{jobPrefix,jdbcType=VARCHAR}
             </if>
+            <if test="regionId != null">
+                and region_id = #{regionId,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryId != null">
+                and category_id =#{categoryId,jdbcType=VARCHAR}
+            </if>
             <if test="null != searchKey">
                 and (title LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
                 OR region_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
@@ -172,6 +178,12 @@
             </if>
             <if test="jobPrefix != null">
                 and td.job_prefix =#{jobPrefix,jdbcType=VARCHAR}
+            </if>
+            <if test="regionId != null">
+                and region_id = #{regionId,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryId != null">
+                and category_id =#{categoryId,jdbcType=VARCHAR}
             </if>
             <if test="null != searchKey">
                 and (title LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
