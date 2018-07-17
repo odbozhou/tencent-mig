@@ -44,7 +44,8 @@ public interface JobService extends BaseService<Job> {
      *
      * @param pager
      * @param department
+     * @param searchKey
      * @return
      */
-    NaviPage<Job> getHotPagerList(Pager pager, Department department);
+    NaviPage<Job> getHotPagerList(Pager pager, Department department, String searchKey);
 }

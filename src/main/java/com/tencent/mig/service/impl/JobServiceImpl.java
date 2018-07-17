@@ -9,7 +9,6 @@ import com.tencent.mig.service.JobService;
 import com.tencent.mig.utils.NaviPageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -59,13 +58,13 @@ public class JobServiceImpl extends BaseServiceImpl<Job> implements JobService {
     }
 
     @Override
-    public NaviPage<Job> getHotPagerList(Pager pager, Department department) {
-        int totalRow = jobDao.getHotTotal(department);
+    public NaviPage<Job> getHotPagerList(Pager pager, Department department, String searchKey) {
+        int totalRow = jobDao.getHotTotal(department.getDeptId(), department.getJobPrefix(), searchKey);
         if (0 == totalRow) {
             return null;
         }
         pager.setTotalRows(totalRow);
-        List<Job> list = jobDao.getHotPagerList(department.getDeptId(), department.getJobPrefix(), pager.getPageStartRow(), pager.getPageRows());
+        List<Job> list = jobDao.getHotPagerList(department.getDeptId(), department.getJobPrefix(), searchKey, pager.getPageStartRow(), pager.getPageRows());
         return NaviPageUtils.toNaviPage(list, pager);
     }
 }

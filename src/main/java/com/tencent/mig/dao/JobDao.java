@@ -61,19 +61,18 @@ public interface JobDao extends BaseDao<Job> {
     /**
      * 获取热门工作数量
      *
-     * @param department
      * @return
      */
-    int getHotTotal(Department department);
+    int getHotTotal(@Param("deptId")Integer deptId, @Param("jobPrefix")String jobPrefix, @Param("searchKey")String searchKey);
 
     /**
      * 取热门工作列表
      *
      * @param deptId
      * @param jobPrefix
-     * @param pageStartRow
-     * @param pageRows
-     * @return
+     * @param searchKey
+     *@param pageStartRow
+     * @param pageRows   @return
      */
-    List<Job> getHotPagerList(@Param("deptId") Integer deptId, @Param("jobPrefix") String jobPrefix, @Param("pageStartRow") int pageStartRow, @Param("pageRows") int pageRows);
+    List<Job> getHotPagerList(@Param("deptId") Integer deptId, @Param("jobPrefix") String jobPrefix, @Param("searchKey") String searchKey, @Param("pageStartRow") int pageStartRow, @Param("pageRows") int pageRows);
 }

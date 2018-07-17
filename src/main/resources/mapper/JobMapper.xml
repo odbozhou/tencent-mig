@@ -132,7 +132,7 @@
         order by create_time DESC
         limit #{pageStartRow}, #{pageRows}
     </select>
-    <select id="getHotTotal" parameterType="com.tencent.mig.model.Department" resultType="java.lang.Integer">
+    <select id="getHotTotal" resultType="java.lang.Integer">
         select
         count(distinct tj.id)
         from tb_job tj, tb_department td
@@ -143,6 +143,11 @@
             </if>
             <if test="jobPrefix != null">
                 and td.job_prefix =#{jobPrefix,jdbcType=VARCHAR}
+            </if>
+            <if test="null != searchKey">
+                and (title LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+                OR region_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+                OR category_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%")
             </if>
         </where>
     </select>
@@ -157,6 +162,11 @@
             </if>
             <if test="jobPrefix != null">
                 and td.job_prefix =#{jobPrefix,jdbcType=VARCHAR}
+            </if>
+            <if test="null != searchKey">
+                and (title LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+                OR region_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%"
+                OR category_name LIKE "%"#{searchKey,jdbcType=VARCHAR}"%")
             </if>
         </where>
         order by tj.create_time desc
