@@ -1,7 +1,6 @@
 package com.tencent.mig.dao;
 
 import com.tencent.mig.common.BaseDao;
-import com.tencent.mig.model.Department;
 import com.tencent.mig.model.Job;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -27,11 +26,11 @@ public interface JobDao extends BaseDao<Job> {
      *
      * @param regionId
      * @param categoryId
-     * @param pageStartRow
-     * @param pageRows
-     * @return
+     * @param searchKey
+     *@param pageStartRow
+     * @param pageRows   @return
      */
-    List<Job> getPagerList(@Param("regionId") String regionId, @Param("categoryId") String categoryId, @Param("pageStartRow") int pageStartRow, @Param("pageRows") int pageRows);
+    List<Job> getPagerList(@Param("regionId") String regionId, @Param("categoryId") String categoryId, @Param("searchKey")String searchKey, @Param("pageStartRow") int pageStartRow, @Param("pageRows") int pageRows);
 
     /**
      * 搜索结果总数

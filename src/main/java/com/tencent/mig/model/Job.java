@@ -52,6 +52,9 @@ public class Job {
     @JSONField(name = "s")
     private String responsibility;
 
+    @JsonIgnore
+    private String searchKey;
+
     public String getId() {
         return id;
     }
@@ -170,5 +173,13 @@ public class Job {
 
     public void setResponsibility(String responsibility) {
         this.responsibility = responsibility;
+    }
+
+    public String getSearchKey() {
+        return searchKey;
+    }
+
+    public void setSearchKey(String searchKey) {
+        this.searchKey = searchKey;
     }
 }

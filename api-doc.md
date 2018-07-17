@@ -286,6 +286,12 @@
 			<td>string</td>
 			<td>职位类别id</td>
 		</tr>
+		<tr>
+			<td>searchKey</td>
+			<td>否</td>
+			<td>string</td>
+			<td>搜索关键字</td>
+		</tr>			
 	    <tr>
 			<td>pageRows</td>
 			<td>否</td>
@@ -313,6 +319,7 @@
 	            {
 	                "id": "42184",
 	                "title": "MIG16-地图检索机器学习算法高级研发工程师（北京）",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -326,6 +333,7 @@
 	            {
 	                "id": "42112",
 	                "title": "MIG16-Android开发工程师(北京)",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -339,6 +347,7 @@
 	            {
 	                "id": "41816",
 	                "title": "MIG16-自动驾驶仿真模拟系统-服务器工程师",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -444,6 +453,11 @@
 		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;title</td>
 				<td>string</td>
 		  		<td>职位标题</td>
+		  </tr>           
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;titlePrefix</td>
+				<td>string</td>
+		  		<td>职位前缀</td>
 		  </tr>
           <tr>
 		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;regionId</td>
@@ -536,6 +550,7 @@
 	            {
 	                "id": "42184",
 	                "title": "MIG16-地图检索机器学习算法高级研发工程师（北京）",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -549,6 +564,7 @@
 	            {
 	                "id": "42112",
 	                "title": "MIG16-Android开发工程师(北京)",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -562,6 +578,7 @@
 	            {
 	                "id": "41816",
 	                "title": "MIG16-自动驾驶仿真模拟系统-服务器工程师",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -743,6 +760,7 @@
 	    "data": {
 	        "id": "42211",
 	        "title": "MIG03-腾讯MIG研发部架构师（深圳）",
+	        "titlePrefix": "MIG15",
 	        "regionId": "2218",
 	        "regionName": "深圳",
 	        "categoryId": "87",
@@ -773,6 +791,11 @@
 		  		<td>title</td>
 				<td>string</td>
 		  		<td>职位标题</td>
+		  </tr>           
+		  <tr>
+		  		<td>titlePrefix</td>
+				<td>string</td>
+		  		<td>职位前缀</td>
 		  </tr>
           <tr>
 		  		<td>regionId</td>
@@ -901,6 +924,12 @@
 			<td>string</td>
 			<td>职位前缀</td>
 		</tr>
+		<tr>
+			<td>searchKey</td>
+			<td>否</td>
+			<td>string</td>
+			<td>搜索关键字</td>
+		</tr>		
 	    <tr>
 			<td>pageRows</td>
 			<td>否</td>
@@ -928,6 +957,7 @@
 	            {
 	                "id": "42184",
 	                "title": "MIG16-地图检索机器学习算法高级研发工程师（北京）",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -941,6 +971,7 @@
 	            {
 	                "id": "42112",
 	                "title": "MIG16-Android开发工程师(北京)",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -954,6 +985,7 @@
 	            {
 	                "id": "41816",
 	                "title": "MIG16-自动驾驶仿真模拟系统-服务器工程师",
+	                "titlePrefix": "MIG15",
 	                "regionId": "2156",
 	                "regionName": "北京",
 	                "categoryId": "87",
@@ -1060,6 +1092,11 @@
 				<td>string</td>
 		  		<td>职位标题</td>
 		  </tr>
+		  <tr>
+		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;titlePrefix</td>
+				<td>string</td>
+		  		<td>职位前缀</td>
+		  </tr>		  
           <tr>
 		  		<td>&nbsp;&nbsp;&nbsp;&nbsp;regionId</td>
 				<td>string</td>

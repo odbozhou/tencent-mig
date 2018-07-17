@@ -37,7 +37,7 @@ public class JobServiceImpl extends BaseServiceImpl<Job> implements JobService {
             return null;
         }
         pager.setTotalRows(totalRow);
-        List<Job> list = jobDao.getPagerList(job.getRegionId(), job.getCategoryId(), pager.getPageStartRow(), pager.getPageRows());
+        List<Job> list = jobDao.getPagerList(job.getRegionId(), job.getCategoryId(), job.getSearchKey(), pager.getPageStartRow(), pager.getPageRows());
         return NaviPageUtils.toNaviPage(list, pager);
     }
 
