@@ -18,6 +18,7 @@
         select
         <include refid="Base_Column_List"/>
         from tb_region
+        order by id desc
     </select>
     <insert id="insertList">
         insert into tb_region (id, name)
