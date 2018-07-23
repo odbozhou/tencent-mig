@@ -196,7 +196,7 @@
     </select>
     <select id="detail" resultMap="detailMap">
         select
-        tj.id, tj.title, tj.region_id, tj.region_name, tj.category_id, tj.category_name, tj.recruiting_numbers,
+        tj.id, tj.title, tj.title_prefix, tj.region_id, tj.region_name, tj.category_id, tj.category_name, tj.recruiting_numbers,
         tj.is_urgently_seeking, tj.create_time, tjd.requirment, tjd.responsibility
         from tb_job tj, tb_job_detail tjd
         where
